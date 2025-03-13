@@ -1,8 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+dotenv.config()
 
 const Product = require('./models/product.model.js');
 const productRoute = require('./routes/product.route.js');
+
 
 // A middlewear to convert the json
 const app = express();
@@ -20,7 +24,7 @@ app.get('/', (req, res) => {
 })
 
 mongoose
-  .connect('mongodb+srv://supriyag1027:64QEHEbKREt8CX5w@cluster0.gcsjt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+  .connect(process.env.MONGO_CONNECTION_STRING)
   .then(() => {
     console.log('Connected to MongoDB!');
 
