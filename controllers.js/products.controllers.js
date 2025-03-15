@@ -1,5 +1,6 @@
-const Product = require('../product.model');
+const Product = require('../../models/product.model');
 
+// Retrieve all the items from the database
 const getProducts = async (req , res) => {
     try {
         const products = await Product.find({});
@@ -9,7 +10,7 @@ const getProducts = async (req , res) => {
       }
 };
 
-
+// Retrieve only the items required(user specifies)
 const getProduct = async (req, res) => {
     try {
         const {id} = req.params;
@@ -20,6 +21,7 @@ const getProduct = async (req, res) => {
       }
 };
 
+// Post all the items
 const createProduct = async (req, res) => {
     try {
         const product = await Product.create(req.body);
@@ -29,6 +31,7 @@ const createProduct = async (req, res) => {
        }
 };
 
+// Update an item in the DB
 const updatedProduct = async (req, res) => {
     try {
         const {id} = req.params;
@@ -48,6 +51,7 @@ const updatedProduct = async (req, res) => {
       }
 };
 
+// Delete an item from the DB
 const deleteProduct = async (req, res) => {
     try {
         const {id} = req.params;
